@@ -12,6 +12,7 @@ import VerifyEmail from './pages/auth/VerifyEmail';
 import AdminDashboard from './pages/admin/Dashboard';
 import AdminCardList from './pages/admin/CardList';
 import AdminCardForm from './pages/admin/CardForm';
+import QrManagement from './pages/admin/QrManagement';
 import { LanguageProvider } from './context/LanguageContext';
 import { AuthProvider, useAuth } from './context/AuthContext';
 import { CardCategory } from './types';
@@ -73,7 +74,7 @@ const App: React.FC = () => {
                 <Route path="cards" element={<AdminCardList />} />
                 <Route path="cards/new" element={<AdminCardForm />} />
                 <Route path="cards/:id" element={<AdminCardForm />} />
-                <Route path="qr" element={<div className="p-8 text-center">QR Management Placeholder</div>} />
+                <Route path="qr" element={<QrManagement />} />
               </Route>
 
               {/* Public Routes */}

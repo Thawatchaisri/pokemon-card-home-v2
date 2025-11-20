@@ -46,6 +46,9 @@ const mockUsers: MockUser[] = [
   }
 ];
 
+// Mock QR Store
+let mockQrUrl = "https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://line.me/ti/p/@cardcollector";
+
 export const apiService = {
   // --- AUTH API ---
 
@@ -188,7 +191,7 @@ export const apiService = {
 
   getLineQr: async (): Promise<string> => {
     await delay(400);
-    return "https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://line.me/ti/p/@cardcollector"; 
+    return mockQrUrl;
   },
 
   getNews: async (): Promise<NewsItem[]> => {
@@ -200,6 +203,15 @@ export const apiService = {
   },
 
   // --- ADMIN API ---
+
+  updateLineQr: async (file: File): Promise<string> => {
+    await delay(1000);
+    // In a real app, upload to server/s3 and return URL
+    // For mock, create a local object URL that persists for the session
+    const newUrl = URL.createObjectURL(file);
+    mockQrUrl = newUrl;
+    return newUrl;
+  },
 
   createCard: async (cardData: Omit<Card, 'id'>): Promise<Card> => {
     await delay(800);
@@ -228,6 +240,6 @@ export const apiService = {
 
   uploadImage: async (file: File): Promise<string> => {
     await delay(1000);
-    return `https://picsum.photos/400/560?random=${Math.random()}`;
+    return URL.createObjectURL(file);
   }
 };
