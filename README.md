@@ -1,130 +1,102 @@
-<!doctype html>
-<html lang="th">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Pokémon Card Collection — README</title>
-</head>
-<body style="font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; line-height:1.6; color:#0f172a; background:#f8fafc; padding:40px;">
+# 🎴 Pokémon Card Collection  
+เว็บสะสมการ์ดที่แสดงราคาตั้งขายเอง (Manual Price) พร้อมกราฟราคาจาก API ราคาตลาดจริง (PokePriceTracker)
 
-  <header style="max-width:900px; margin:0 auto 28px auto; background:#ffffff; padding:28px; border-radius:12px; box-shadow:0 6px 20px rgba(15,23,42,0.06);">
-    <div style="display:flex; align-items:center; gap:16px;">
-      <div style="width:72px; height:72px; background:linear-gradient(135deg,#06b6d4,#7c3aed); border-radius:12px; display:flex; align-items:center; justify-content:center; color:white; font-weight:700; font-size:20px;">
-        PC
-      </div>
-      <div>
-        <h1 style="margin:0; font-size:22px;">Pokémon Card Collection</h1>
-        <p style="margin:6px 0 0 0; color:#475569;">เว็บสะสมการ์ด — แสดงราคาขายที่กำหนดเอง พร้อมกราฟราคาจากแหล่งข้อมูลภายนอก</p>
-        <p style="margin:6px 0 0 0; color:#94a3b8; font-size:13px;">A collectible card web app with manual selling prices, real-time market charts, and admin management.</p>
-      </div>
-    </div>
-  </header>
+<p align="left">
+  <img src="https://img.shields.io/badge/Next.js-14-black?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white" />
+  <img src="https://img.shields.io/badge/TailwindCSS-38bdf8?style=for-the-badge&logo=tailwindcss&logoColor=white" />
+  <img src="https://img.shields.io/badge/Express.js-000?style=for-the-badge&logo=express&logoColor=white" />
+  <img src="https://img.shields.io/badge/PostgreSQL-336791?style=for-the-badge&logo=postgresql&logoColor=white" />
+</p>
 
-  <main style="max-width:900px; margin:0 auto;">
+---
 
-    <!-- Badges -->
-    <section style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:20px;">
-      <div style="background:#eef2ff; color:#3730a3; padding:6px 10px; border-radius:999px; font-size:13px;">Next.js</div>
-      <div style="background:#ecfeff; color:#065f46; padding:6px 10px; border-radius:999px; font-size:13px;">TypeScript</div>
-      <div style="background:#f1f5f9; color:#1e293b; padding:6px 10px; border-radius:999px; font-size:13px;">TailwindCSS</div>
-      <div style="background:#fff7ed; color:#7c2d12; padding:6px 10px; border-radius:999px; font-size:13px;">Express</div>
-      <div style="background:#f0fdf4; color:#065f46; padding:6px 10px; border-radius:999px; font-size:13px;">PostgreSQL</div>
-    </section>
+## 🧩 Features / ฟีเจอร์หลัก
 
-    <!-- Features -->
-    <section style="background:#ffffff; padding:20px; border-radius:12px; box-shadow:0 6px 18px rgba(2,6,23,0.03); margin-bottom:18px;">
-      <h2 style="margin:0 0 12px 0; font-size:16px;">Features / ฟีเจอร์หลัก</h2>
-      <ul style="margin:0; padding-left:18px; color:#334155;">
-        <li>Sub-menus: Pokémon (EN / TH / JP), Baseball, Football</li>
-        <li>Manual selling price per card (admin set)</li>
-        <li>Real-time price history chart (PokePriceTracker) — สำหรับกราฟเท่านั้น</li>
-        <li>View All Cards (เรียงตามราคาสูงสุด) + pagination (10/หน้า)</li>
-        <li>Card detail modal with multi-image carousel (1–10 images)</li>
-        <li>Buy → opens dynamic LINE QR code (managed in Admin)</li>
-        <li>Admin panel: CRUD cards, upload images, manage QR, news</li>
-      </ul>
-    </section>
+### 🔹 Frontend (Next.js)
+- เมนูแนะนำเว็บ / ข่าวสาร  
+- เมนูติดต่อฉัน  
+- Pokémon Card Collection  
+  - English Version Cards  
+  - Thai Version Cards  
+  - Japanese Version Cards  
+- Baseball Card Collection  
+- Football Card Collection  
+- หน้า **View All Cards** (แสดงเฉพาะการ์ด Pokémon ราคาแพงสุด 50 อันดับ)  
+- Pagination หน้า 10 ใบ  
+- หน้าแสดงรายละเอียด:  
+  - แสดงรูปได้หลายรูป (multi-image carousel)  
+  - แสดงราคาขายที่ admin ตั้งเอง (Manual Price)  
+  - กราฟราคาแบบ real-time จาก PokePriceTracker API  
+- ปุ่ม Buy → เปิด Popup QR Code สำหรับเพิ่มเพื่อน LINE  
+  - QR Code อัปเดตได้ผ่านหลังบ้าน
 
-    <!-- Quick Demo / Screenshot -->
-    <section style="display:flex; gap:14px; margin-bottom:18px;">
-      <div style="flex:1; background:#fff; padding:14px; border-radius:12px; box-shadow:0 4px 12px rgba(2,6,23,0.03);">
-        <h3 style="margin:0 0 10px 0; font-size:14px;">Quick Start / วิธีเริ่มต้น</h3>
-        <pre style="background:#0f172a; color:#e6eef8; padding:12px; border-radius:8px; font-size:13px; overflow:auto;"># clone & install
+---
+
+## 🛠️ Backend Features (Express)
+- ระบบจัดการเมนูทุกหน้า
+- ระบบเพิ่ม / แก้ไขการ์ด
+- อัปโหลดหลายรูปต่อการ์ดได้
+- ตั้งราคาขายเองได้ (Manual Price)
+- เชื่อมต่อ API ภายนอกเพื่อดึง real-time price history
+- จัดการ QR Code สำหรับปุ่ม “Buy”
+
+---
+
+## 🗄️ Database Structure (PostgreSQL)
+
+### **cards**
+| field | type | description |
+|-------|------|-------------|
+| id | uuid | primary key |
+| name | text | ชื่อการ์ด |
+| language | text | EN / TH / JP |
+| set_name | text | ชื่อเซ็ต |
+| release_year | int | ปี |
+| condition | text | ตำหนิ |
+| manual_price | numeric | ราคาที่ขายจริง |
+| market_price | numeric | ราคาตลาดปัจจุบัน (optional) |
+| created_at | timestamptz | — |
+
+### **card_images**
+| field | type | description |
+|-------|------|-------------|
+| id | uuid | PK |
+| card_id | uuid | FK → cards |
+| image_url | text | รูปแต่ละใบ (1–10 รูป) |
+
+### **line_qr**
+| field | type |
+|-------|-------|
+| id | uuid |
+| qr_image_url | text |
+| updated_at | timestamptz |
+
+---
+
+## 📌 API Endpoints
+
+### Public
+| Method | Endpoint | Description |
+|--------|-----------|-------------|
+| GET | `/api/cards?language=EN` | ดึงการ์ดตามภาษา |
+| GET | `/api/cards/view-all?page=1&perPage=10` | การ์ด Pokémon ราคาแพงสุด 50 อันดับ |
+| GET | `/api/cards/:id` | รายละเอียดการ์ด |
+| GET | `/api/cards/:id/price-history` | กราฟราคาจาก API ภายนอก |
+
+### Admin
+| Method | Endpoint |
+|--------|----------|
+| POST | `/api/admin/cards` |
+| PUT | `/api/admin/cards/:id` |
+| DELETE | `/api/admin/cards/:id` |
+| POST | `/api/admin/upload/images` |
+| PUT | `/api/admin/line-qr` |
+
+---
+
+## 📦 Installation & Run
+
+```bash
 git clone https://github.com/username/pokemon-card-collection.git
-cd project
-
-# frontend
-cd frontend
-npm install
-npm run dev
-
-# backend
-cd ../backend
-npm install
-npm run dev
-</pre>
-      </div>
-
-      <div style="width:260px; background:linear-gradient(180deg,#0ea5e9,#7c3aed); color:white; padding:14px; border-radius:12px; display:flex; flex-direction:column; justify-content:center;">
-        <h4 style="margin:0 0 8px 0;">Deploy Tips</h4>
-        <ul style="margin:0; padding-left:18px; font-size:13px;">
-          <li>Use Docker + docker-compose</li>
-          <li>Store secrets in env vars / secret manager</li>
-          <li>Use CDN (images) and HTTPS</li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- API & DB -->
-    <section style="display:grid; grid-template-columns: 1fr 1fr; gap:12px; margin-bottom:18px;">
-      <div style="background:#fff; padding:16px; border-radius:12px; box-shadow:0 4px 12px rgba(2,6,23,0.03);">
-        <h3 style="margin-top:0; font-size:14px;">API Endpoints (selected)</h3>
-        <ul style="padding-left:18px; color:#334155;">
-          <li><code>/api/cards?language=</code> — list by language</li>
-          <li><code>/api/cards/view-all?page=&perPage=</code> — view all sorted by price</li>
-          <li><code>/api/cards/{id}/price-history</code> — chart data (proxy)</li>
-          <li><code>/api/admin/cards</code> — CRUD (admin)</li>
-          <li><code>/api/admin/line-qr</code> — manage QR code</li>
-        </ul>
-      </div>
-
-      <div style="background:#fff; padding:16px; border-radius:12px; box-shadow:0 4px 12px rgba(2,6,23,0.03);">
-        <h3 style="margin-top:0; font-size:14px;">Database (high level)</h3>
-        <p style="margin:0; color:#475569; font-size:13px;">
-          PostgreSQL with tables: <strong>cards</strong>, <strong>card_images</strong>, <strong>price_history</strong>, <strong>admins</strong>, <strong>line_qr</strong>.
-        </p>
-      </div>
-    </section>
-
-    <!-- How to contribute -->
-    <section style="background:#ffffff; padding:18px; border-radius:12px; margin-bottom:18px; box-shadow:0 4px 12px rgba(2,6,23,0.03);">
-      <h3 style="margin:0 0 8px 0; font-size:15px;">Contributing / ร่วมพัฒนา</h3>
-      <ol style="padding-left:18px; color:#334155;">
-        <li>Fork the repo</li>
-        <li>Create a feature branch</li>
-        <li>Write tests and update docs</li>
-        <li>Submit a pull request</li>
-      </ol>
-    </section>
-
-    <!-- Contact and License -->
-    <section style="display:flex; gap:12px; align-items:center; justify-content:space-between; margin-bottom:40px;">
-      <div style="background:#fff; padding:16px; border-radius:12px; box-shadow:0 4px 12px rgba(2,6,23,0.03); flex:1;">
-        <h3 style="margin:0 0 8px 0; font-size:14px;">Contact / ติดต่อ</h3>
-        <p style="margin:0; color:#475569; font-size:13px;">Line: <strong>@yourline</strong> · Email: <strong>you@example.com</strong></p>
-      </div>
-
-      <div style="background:#fff; padding:16px; border-radius:12px; box-shadow:0 4px 12px rgba(2,6,23,0.03); width:200px; text-align:center;">
-        <h4 style="margin:0 0 6px 0;">License</h4>
-        <p style="margin:0; color:#475569; font-size:13px;">MIT</p>
-      </div>
-    </section>
-
-    <footer style="text-align:center; color:#94a3b8; font-size:13px; margin-bottom:10px;">
-      <div>© <span id="year"></span> Pokémon Card Collection — Made with ❤️</div>
-      <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
-    </footer>
-
-  </main>
-</body>
-</html>
+cd pokemon-card-collection
